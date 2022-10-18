@@ -1,0 +1,17 @@
+FROM rust:1.63.0
+RUN useradd -r -ms  /bin/bash random
+WORKDIR /home/random
+USER random
+RUN cargo new --bin tp02
+WORKDIR /home/random/tp02
+COPY ./Cargo.lock ./Cargo.lock
+COPY ./Cargo.toml ./Cargo.toml
+RUN cargo build --release
+RUN rm src/*.rs
+COPY ./src ./src
+RUN rm ./target/release/deps/Tp01*
+RUN cargo build --release
+
+FROM debian:stable-slim
+COPY --from=0 /home/random/tp02/target/release/Tp01 /
+CMD ["/Tp01"]
