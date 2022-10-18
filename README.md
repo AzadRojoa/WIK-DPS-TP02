@@ -22,9 +22,9 @@ Azad Rojoa
 
 - Tester le programme :
 
-  Terminal : curl http://127.0.0.1:8080/ping
+  Terminal : curl http://localhost:8080/ping
 
-  Navigateur: http://127.0.0.1:8080/ping
+  Navigateur: http://localhost:8080/ping
 
 - Fonctionnement:
 
